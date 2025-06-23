@@ -1,36 +1,140 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ulrean Test Work - Next.js v15.3.3
 
-## Getting Started
+This project is a Next.js application featuring:
 
-First, run the development server:
+- Public post pages: `/` (Read-only landing page - view all posts)
+- Public post pages: `/post/[id]` (Read-only post view)
+- Admin dashboard: `/admin`
+- Admin posts list: `/admin/posts`
+- Admin post edit: `/admin/posts/[id]/edit`
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js v16+ (recommended)
+- npm or yarn package manager
+- Next.js v15.3.3
+
+---
+
+### Installation
+
+Clone the repo and install dependencies:
 
 ```bash
+git clone https://github.com/MohammadMustafawaqar/ulreana-test-work.git
+cd ulreana-test-work
+npm install
+# or
+yarn install
+
+```
+---
+
+### Run development server
+```bash
+
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
+Runs the Next.js app in development mode.
+Open http://localhost:3000 to view it in the browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for production
+```bash
+npm run build
+# or
+yarn build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+Builds the app for production to the .next folder.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+### Run production server
+```bash
+npm run start
+# or
+yarn start
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+Runs the compiled production build.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### Project Structure Overview
+```bash
+|src
+|-app
+|-- layout.tsx
+|-- not-found.tsx
+|-- login
+  |-- page.tsx
+|-- api
+  |-- login
+    |-- route.ts
+  |-- logout
+    |-- route.ts
+|-- (public)
+  |-- layout.tsx
+  |-- page.tsx
+  |-- posts
+    |-- [id]
+      |-- page.tsx
+|-- admin
+  |-- layout.tsx
+  |-- page.tsx
+  |-- posts
+    |-- page.tsx
+    |-- create
+      |-- page.tsx
+    |-- [id]
+      |-- edit
+        |-- page.tsx
+```
+---
+## Routing Details
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Public Routes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### `/` (Landing Page)
+
+- **Description:** Shows a list of posts on the landing page.
+- **Functionality:** Fetches and displays multiple posts, often with search and filtering.
+- **Notes:** Typically uses client or server components with data fetching.
+
+#### `/post/[id]`
+
+- **Description:** View a single post by its ID.
+- **Functionality:** Fetches and displays the post content.
+- **Notes:** Uses server-side data fetching and supports metadata generation for SEO.
+
+---
+
+### Admin Routes
+
+#### `/admin`
+
+- **Description:** Admin dashboard home page.
+- **Functionality:** Provides overview and access to admin features.
+- **Notes:** Should be protected with authentication.
+
+#### `/admin/posts`
+
+- **Description:** Admin page listing all posts.
+- **Functionality:** Allows managing posts (view, create, delete).
+- **Notes:** Fetches posts data, usually with React Query or server components.
+
+#### `/admin/posts/[id]/edit`
+
+- **Description:** Edit page for a specific post.
+- **Functionality:** Provides a form to edit and update post details.
+- **Notes:** Should handle form submission and validation.
+

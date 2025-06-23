@@ -4,7 +4,7 @@ import { cookies as getCookies } from 'next/headers'
 
 export async function setAuthCookie(token: string) {
   const cookies = await getCookies()
-  cookies.set('token', token, {
+  return cookies.set('admin_token', token, {
     httpOnly: true,
     path: '/',
     maxAge: 60 * 60, 
@@ -13,12 +13,12 @@ export async function setAuthCookie(token: string) {
 
 export async function clearAuthCookie() {
   const cookies = await getCookies()
-  cookies.delete('token')
+  cookies.delete('admin_token')
 }
 
 export async function getTokenFromCookies() {
   const cookies = await getCookies()
-  return cookies.get('token')?.value
+  return cookies.get('admin_token')?.value
 }
 
 export async function isAuthenticated() {

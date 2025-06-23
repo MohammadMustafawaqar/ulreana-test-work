@@ -28,15 +28,16 @@ export function LoginForm() {
         setIsLoading(true)
         setError('')
 
-        axios.post('/api/login', {
+        await axios.post('/api/login', {
             username: data.email,
             password: data.password,
         }).then(() => {
             setIsLoading(false)
             router.push('/admin/')
+            router.refresh()
         }).catch((error) => {
+            setError(error.response.data.message)
             setIsLoading(false)
-            throw new Error(error.message || 'Login failed')
         });
     }
 
